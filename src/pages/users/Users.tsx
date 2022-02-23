@@ -58,7 +58,7 @@ const Users = () => {
        <div style={{display:'flex',justifyContent: 'center',alignItems:'center',padding:'2rem 0'}} className="shadow">
        <TextField
           inputRef={inputRef}
-          style={{width:'50%'}}
+          style={{width:'50%',marginTop: '1.5rem'}}
           size="small"
           helperText="Please enter your task to do"
           id="demo-helper-text-aligned"
