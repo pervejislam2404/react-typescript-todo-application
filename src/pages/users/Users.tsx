@@ -80,7 +80,7 @@ const Users = () => {
             {todo?.length &&
               todo?.map((td,index)=>{return(
                 <TableRow key={index}>
-                <TableCell  align="center">todo</TableCell>
+                <TableCell  align="center">Task</TableCell>
                <TableCell align="center">{td.todo}</TableCell>
                <TableCell align="center">
                <Button onClick={()=>handleDelete(index)} variant="outlined" startIcon={<DeleteIcon />}>
