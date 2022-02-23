@@ -11,51 +11,31 @@ import { Button, TextField } from "@mui/material";
 
 const Users = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-
+  
   interface Provider {
     todo:string
   }
+
   const [todo,setTodo] = React.useState<Provider[]>([]);
-  
-
- 
-
-  // const todoVal:any = JSON.parse(localStorage.getItem('todo')!)
-
-//  if(todoVal){
-//    setTodo(todoVal);
-//  }
-
-
+  const [loading,setLoading] = React.useState(false);
 
   const handleAdd = () => {
     if (inputRef.current) {
-     const inputVal= inputRef.current.value;   
-    //  console.log(list,'from line 24')
-    //  JSON.stringify(list)
-    // const todoVal = JSON.parse(localStorage.getItem("userVal") || '') 
+     const inputVal= inputRef.current.value;  
     const todoVal:any = JSON.parse(localStorage.getItem('todo')!)
     console.log(todoVal);
-    // console.log(todoVal);
     if(todoVal?.length){
-      
-     const list = [...todo,{todo : inputVal}];
+      const list = [...todo,{todo : inputVal}];
       console.log(list)
       localStorage.setItem('todo',JSON.stringify(list))
-      //  const objectVal = todoVal
       setTodo(list)
-      //  console.log(todoVal);
-    // }
-  
-    // inputRef.current.value="";
-
-
     }
-    // else{
-    //   localStorage.setItem('todo', JSON.stringify())
-    // }
-
-    // setTodo([{val:'omuk'}])
+    else{
+      const todo =[{todo:inputVal}]
+      localStorage.setItem('todo', JSON.stringify(todo));
+      setLoading(true)
+    }
+    inputRef.current.value="";
   }
   }
   
@@ -63,13 +43,12 @@ const Users = () => {
    React.useEffect(() => {
     const todoVal:any = JSON.parse(localStorage.getItem('todo')!)
     setTodo(todoVal);
-  },[inputRef])
+  },[inputRef,loading])
 
   const handleDelete = (id:number) => {
-    console.log('mamur beta kam hoye gece',id)
     const todoVal:any = JSON.parse(localStorage.getItem('todo')!)
     const filteredVal = todoVal.filter((it:object,index:number)=> index !== id)
-
+    setTodo(filteredVal)
     localStorage.setItem('todo',JSON.stringify(filteredVal))
   }
 
@@ -98,8 +77,8 @@ const Users = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {
-              todo.map((td,index)=>{return(
+            {todo?.length &&
+              todo?.map((td,index)=>{return(
                 <TableRow key={index}>
                 <TableCell  align="center">todo</TableCell>
                <TableCell align="center">{td.todo}</TableCell>
