@@ -22,8 +22,8 @@ const Users = () => {
   const handleAdd = () => {
     if (inputRef.current) {
      const inputVal= inputRef.current.value;  
-    const todoVal:any = JSON.parse(localStorage.getItem('todo')!)
-    console.log(todoVal);
+     const todoVal:any = JSON.parse(localStorage.getItem('todo')!)
+
     if(todoVal?.length){
       const list = [...todo,{todo : inputVal}];
       console.log(list)
@@ -71,8 +71,8 @@ const Users = () => {
         <Table  aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell align="center">Type</TableCell>
               <TableCell align="center">Todo</TableCell>
-              <TableCell align="center">Calories</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
