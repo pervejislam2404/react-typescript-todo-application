@@ -60,9 +60,9 @@ const Users = () => {
           inputRef={inputRef}
           style={{width:'50%'}}
           size="small"
-          // helperText="Please enter your name"
+          helperText="Please enter your task to do"
           id="demo-helper-text-aligned"
-          label="Name"
+          label="Task"
         />
         {/* <input type="text" name="" ref={inputRef} id="" /> */}
         <Button onClick={handleAdd} variant="contained">Add</Button>
